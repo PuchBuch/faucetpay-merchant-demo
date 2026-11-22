@@ -132,7 +132,7 @@ CLI that records your FaucetPay balances in EUR, builds monthly reports and expo
 ## FaucetPay account
 
 Need a FaucetPay account to try this? Sign up here:
-<https://faucetpay.io/?r=YOUR_REF_ID>
+<https://faucetpay.io/?r=44490>
 
 *This is a referral link: if you sign up through it, I may get a small reward from FaucetPay. It costs you nothing.*
 
