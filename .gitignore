@@ -1,0 +1,21 @@
+# secrets & data
+.env
+*.db
+*.db-journal
+
+# local task notes
+TASK_CLAUDE_CODE.md
+
+# virtualenvs
+venv/
+.venv/
+env/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/

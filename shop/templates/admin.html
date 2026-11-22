@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Orders{% endblock %}
+{% block content %}
+<h1>Orders <span class="muted">(last 100)</span></h1>
+
+{% if rows %}
+<div class="scroll">
+<table class="orders">
+  <thead>
+    <tr>
+      <th>#</th><th>Product</th><th>Price</th><th>Status</th><th>Transaction</th>
+      <th>Payer</th><th>Paid</th><th>Created</th><th>Paid at</th><th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td><a href="{{ url_for('order_status', order_id=r.id) }}">{{ r.id }}</a></td>
+      <td>{{ r.product }}</td>
+      <td class="num">{{ r.amount }} {{ r.currency }}</td>
+      <td><span class="badge {{ r.status }}">{{ r.status }}</span></td>
+      <td><code>{{ r.transaction_id or "" }}</code></td>
+      <td>{{ r.payer or "" }}</td>
+      <td class="num">{% if r.paid_amount %}{{ r.paid_amount }} {{ r.paid_currency }}{% endif %}</td>
+      <td>{{ r.created_at }}</td>
+      <td>{{ r.paid_at or "" }}</td>
+      <td class="note">{{ r.note or "" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="muted">No orders yet.</p>
+{% endif %}
+{% endblock %}

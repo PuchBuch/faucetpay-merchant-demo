@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+{%- if order.status == "created" and not cancelled %}<meta http-equiv="refresh" content="10">{% endif -%}
+{% endblock %}
+{% block title %}Order #{{ order.id }}{% endblock %}
+{% block content %}
+<h1>Order #{{ order.id }}</h1>
+
+{% if order.status == "paid" %}
+<div class="notice ok"><strong>Paid.</strong> Thank you! Payment was verified with FaucetPay.</div>
+{% elif cancelled %}
+<div class="notice warn"><strong>Payment cancelled.</strong> You can go back and try again.</div>
+{% else %}
+<div class="notice info">
+  <strong>Waiting for payment confirmation…</strong>
+  This page refreshes every 10 seconds. It can take a minute after you pay.
+</div>
+{% endif %}
+
+<table class="details">
+  <tr><th>Product</th><td>{{ product.name if product else order.product }}</td></tr>
+  <tr><th>Price</th><td>{{ order.amount }} {{ order.currency }}</td></tr>
+  <tr><th>Status</th><td><span class="badge {{ order.status }}">{{ order.status }}</span></td></tr>
+  <tr><th>Created</th><td>{{ order.created_at }}</td></tr>
+  {% if order.status == "paid" %}
+  <tr><th>Paid</th><td>{{ order.paid_amount }} {{ order.paid_currency }} at {{ order.paid_at }}</td></tr>
+  {% endif %}
+</table>
+
+<p><a href="{{ url_for('index') }}">← Back to products</a></p>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<h1>Products</h1>
+
+{% if not configured %}
+<div class="notice warn">
+  <strong>Not configured.</strong> Set <code>FAUCETPAY_MERCHANT_USERNAME</code> (and
+  <code>PUBLIC_BASE_URL</code>) to enable checkout.
+</div>
+{% endif %}
+
+<div class="grid">
+  {% for pid, p in products.items() %}
+  <section class="card">
+    <h2>{{ p.name }}</h2>
+    <p class="price">{{ p.price }} {{ p.currency }}</p>
+    <form method="post" action="{{ url_for('buy', product_id=pid) }}">
+      <button type="submit" {% if not configured %}disabled{% endif %}>Pay with crypto</button>
+    </form>
+  </section>
+  {% endfor %}
+</div>
+
+<p class="muted">You choose the coin on the FaucetPay checkout page. The order is marked paid
+only after the shop verifies the payment with FaucetPay.</p>
+{% endblock %}

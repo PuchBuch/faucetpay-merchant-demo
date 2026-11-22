@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Redirecting to FaucetPay{% endblock %}
+{% block content %}
+<h1>Redirecting to FaucetPay…</h1>
+<p>Order #{{ fields.custom }}: {{ fields.item_description }}, {{ fields.amount1 }} {{ fields.currency1 }}</p>
+
+<form id="checkout" method="post" action="{{ action }}">
+  {% for name, value in fields.items() %}
+  <input type="hidden" name="{{ name }}" value="{{ value }}">
+  {% endfor %}
+  <noscript><p>JavaScript is disabled. Press the button to continue.</p></noscript>
+  <button type="submit">Continue to FaucetPay</button>
+</form>
+
+<script>document.getElementById("checkout").submit();</script>
+{% endblock %}

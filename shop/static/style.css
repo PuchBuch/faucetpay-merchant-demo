@@ -1,0 +1,61 @@
+:root {
+  --bg: #f6f7f9;
+  --fg: #1c2330;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --border: #e3e6eb;
+  --accent: #2563eb;
+  --ok-bg: #e7f6ec; --ok-fg: #166534;
+  --warn-bg: #fff6e0; --warn-fg: #8a5a00;
+  --info-bg: #e8f0fe; --info-fg: #1e40af;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+header, main, footer { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+header { padding-top: 20px; padding-bottom: 8px; }
+footer { padding-top: 32px; padding-bottom: 24px; color: var(--muted); font-size: 13px; }
+
+.brand { font-weight: 600; color: var(--fg); text-decoration: none; }
+a { color: var(--accent); }
+h1 { font-size: 26px; margin: 16px 0; }
+h2 { font-size: 18px; margin: 0 0 8px; }
+code { font-family: ui-monospace, Consolas, monospace; font-size: 0.9em; }
+.muted { color: var(--muted); font-weight: normal; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+.price { font-size: 20px; font-weight: 600; margin: 0 0 14px; }
+
+button {
+  background: var(--accent); color: #fff; border: 0; border-radius: 8px;
+  padding: 10px 16px; font: inherit; cursor: pointer;
+}
+button:disabled { background: #a5b4cf; cursor: not-allowed; }
+
+.notice { border-radius: 8px; padding: 12px 14px; margin: 0 0 16px; }
+.notice.ok { background: var(--ok-bg); color: var(--ok-fg); }
+.notice.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.notice.info { background: var(--info-bg); color: var(--info-fg); }
+
+table { border-collapse: collapse; background: var(--card); }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-weight: 600; }
+.details { min-width: 320px; border: 1px solid var(--border); margin-bottom: 16px; }
+.details th { width: 110px; color: var(--muted); font-weight: normal; }
+.scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+.orders { width: 100%; font-size: 14px; }
+.orders thead th { background: #eef0f4; white-space: nowrap; }
+.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.note { color: var(--warn-fg); }
+
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 13px; }
+.badge.paid { background: var(--ok-bg); color: var(--ok-fg); }
+.badge.created { background: var(--info-bg); color: var(--info-fg); }
