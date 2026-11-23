@@ -39,6 +39,13 @@ FaucetPay retries a callback that does not get HTTP 200 (immediately, then after
 cannot be reached for verification, so that the callback is retried. A payment
 that fails the checks gets **200**, so a bad payment is not retried.
 
+## Before you start
+
+- **Merchant access must be enabled.** Apply for a merchant account in your FaucetPay
+  dashboard (<https://faucetpay.io/settings/merchant>). Payments arrive under your FaucetPay username.
+- **Buyers pay from their FaucetPay balance**, not directly from an external wallet, so every
+  buyer needs a FaucetPay account.
+
 ## Installation
 
 Requires Python 3.11+.
@@ -82,7 +89,8 @@ test you can expose the local server through a tunnel, for example:
 - **Cloudflare Tunnel:** `cloudflared tunnel --url http://localhost:5000` gives you an
   `https://….trycloudflare.com` URL.
 
-Put that URL into `PUBLIC_BASE_URL`, restart the app, and make a small real payment.
+Put that URL into `PUBLIC_BASE_URL`, restart the app, and make a small real payment from
+another FaucetPay user's account (merchant access must already be approved).
 Watch the app log and `/admin/orders`. Stop the tunnel afterwards: while it runs,
 your local server is reachable from the internet.
 
